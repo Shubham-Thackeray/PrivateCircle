@@ -1,0 +1,68 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  width: 25%;
+}
+
+.colName {
+  font-weight: 900;
+}
+.actionIcon {
+  padding: 5px;
+  font-size: 16px;
+}
+.actionIcon :hover {
+  padding: 0px;
+  /* font-size: 18px; */
+  transform: scale(1.2);
+  color: #0c0c0c;
+}
+.btn-light:not(:disabled):not(.disabled).active,
+.btn-light:not(:disabled):not(.disabled):active,
+.show > .btn-light.dropdown-toggle,
+.btn-light.focus,
+.btn-light:focus {
+  color: #212529;
+  /* background-color: #dae0e5; */
+  border-color: #d3d9df;
+  border-bottom: 2px solid black;
+}
+.highlight {
+  background: #dae0e5; /* green */
+}
+.addit {
+  font-size: 14px;
+  color: cornflowerblue;
+  font-weight: 700;
+}
+.p-20 {
+  padding: 20px 0;
+}
+.p-10 {
+  padding: 10px;
+}
+.ml-20{
+    margin-left: 20px;
+}
+.bg-gray {
+  background-color: #dae0e5;
+}
+.search-bar {
+  padding: 6px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #dae0e5;
+}
+.detailslist ul {
+    list-style: none;
+    padding: 10px;
+    color: cornflowerblue;
+}

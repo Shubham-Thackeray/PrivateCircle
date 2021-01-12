@@ -1,0 +1,145 @@
+<div class="container">
+  <div class="row p-20 bg-gray">
+    <div class="col-7">
+      <button type="button" class="btn btn-dark" (click)="NotAvailabe(NA)">
+        <i class="fa fa-list"></i>
+        SAVED LIST
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-light ml-20"
+        (click)="NotAvailabe(NA)"
+      >
+        <i class="fa fa-filter"></i>
+        SAVED FILTERS
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-light ml-20"
+        (click)="NotAvailabe(NA)"
+      >
+        <i class="fa fa-history"></i>
+        SAVED HISTORY
+      </button>
+    </div>
+
+    <div class="col-5">
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="search"
+        #input
+        class="search-bar"
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8">
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>date</th>
+            <td mat-cell *matCellDef="let row">{{ row.date }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <td mat-cell *matCellDef="let row" class="colName">
+              {{ row.name }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="No of Entities">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              No of Entities
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.companies.length }}</td>
+          </ng-container>
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>actions</th>
+            <td mat-cell *matCellDef="let row">
+              <span class="actionIcon" (click)="NotAvailabe(NA)"
+                ><i class="fa fa-envelope"></i
+              ></span>
+              <span class="actionIcon" (click)="NotAvailabe(NA)"
+                ><i class="fa fa-share-alt"></i
+              ></span>
+              <span class="actionIcon" (click)="NotAvailabe(NA)"
+                ><i class="fa fa-edit"></i
+              ></span>
+              <span class="actionIcon" (click)="NotAvailabe(NA)"
+                ><i class="fa fa-trash"></i
+              ></span>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="details">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+            <td mat-cell *matCellDef="let row">
+              <button
+                type="button"
+                class="btn btn-raised btn-light btn-sm btn-action mlr-2"
+                (click)="highlight(row)"
+              >
+                Details
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr
+            mat-row
+            *matRowDef="let row; columns: displayedColumns"
+            [ngClass]="{ highlight: selectedRowIndex == row.name }"
+          ></tr>
+
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">
+              No data matching the filter "{{ input.value }}"
+            </td>
+          </tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <button
+        type="button"
+        class="btn btn-raised btn-light btn-sm btn-action mlr-2"
+        (click)="NotAvailabe(NA)"
+      >
+        No Description yet <span class="addit">+ Add Description</span>
+      </button>
+      <div class="detailslist">
+        <ul>
+          <li *ngFor="let item of detailsList">{{ item?.name }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #NA let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title"></h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">This functionality isnt integrated yet.</div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-secondary btn-raised"
+      (click)="c('Close click')"
+    >
+      Close
+    </button>
+  </div>
+</ng-template>
